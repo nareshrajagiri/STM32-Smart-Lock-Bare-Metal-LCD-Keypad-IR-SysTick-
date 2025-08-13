@@ -145,7 +145,7 @@ STM32_Smart_Lock/
 
 ## 📹 Demo Video
 
-*(Add your demo video link here after uploading to YouTube or Google Drive)*
+*i will add video here*
 
 ---
 
