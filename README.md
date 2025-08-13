@@ -111,7 +111,7 @@ The system enforces **increasing delays** for wrong password attempts and locks 
      Door Lock Logic
 
 
-
+```
 
 
 
