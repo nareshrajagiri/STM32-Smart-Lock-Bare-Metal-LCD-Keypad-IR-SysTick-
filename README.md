@@ -123,4 +123,51 @@ The system enforces **increasing delays** for wrong password attempts and locks 
 <img width="1101" height="628" alt="image" src="https://github.com/user-attachments/assets/5f2d7aab-5896-4771-a4ca-e00f18200e87" />
 
 
+---
+
+## ▶ How to Run
+
+1. **Open project** in **STM32CubeIDE**.
+2. **Remove HAL includes** (`stm32f4xx_hal.h`) if present.
+3. **Paste provided** `main.c` and `smart_lock.c` into `Core/Src/`.
+4. **Build and flash** to **STM32F407G-DISC1**.
+5. **Connect LCD, keypad, and IR sensor** as per above table.
+6. **Power the board** and test.
+
+---
+
+## 📂 Project Structure
+STM32_Smart_Lock/
+├── Core/
+│ ├── Src/
+│ │ ├── main.c
+│ │ ├── smart_lock.c
+│ ├── Inc/
+│ ├── smart_lock.h
+├── README.md
+
+
+
+---
+
+## 📹 Demo Video
+*i will add video here*
+
+---
+
+## 📌 Future Improvements
+
+- Add **FreeRTOS** for multitasking keypad, LCD, and IR sensor tasks.  
+- Implement **buzzer** for alerts.  
+- Use **EEPROM** to store wrong attempts count.  
+- Integrate **Bluetooth / Wi-Fi** for remote unlock.  
+- Add **biometric authentication** (fingerprint).  
+
+---
+
+## 👨‍💻 Author
+
+**Rajagiri Naresh Kumar**  
+Embedded Systems Enthusiast | Bare-metal C Programmer
+
 
