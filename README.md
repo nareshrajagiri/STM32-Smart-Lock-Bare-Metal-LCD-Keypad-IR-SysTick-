@@ -130,4 +130,22 @@ Uses a **16x2 LCD (4-bit)**, **4x3 matrix keypad**, **IR sensor (active LOW)**, 
 
 5. What you should see: LCD → Waiting for user.
 
+## Troubleshooting
+- LCD blank → adjust contrast (V0), check RW→GND, wiring PA0..PA5, common GND.
 
+- Garbled text → verify 4-bit pins D4..D7 only; check delays.
+
+- Keypad unresponsive → PB0..PB3 rows with pull-ups, PB4..PB6 columns as outputs.
+
+- IR not detected → this code expects LOW = detected on PC0.
+
+- Delays weird → check SystemCoreClock value in system_stm32f4xx.c.
+
+## Future Improvements
+- Buzzer + relay/servo for actual door control
+
+- Change-password menu, store in Flash/EEPROM
+
+- UART logs; BLE/Wi-Fi connectivity
+
+- FreeRTOS tasks (IR, keypad, LCD, buzzer) + MISRA-C cleanup
