@@ -138,14 +138,24 @@ The system enforces **increasing delays** for wrong password attempts and locks 
 
 ## 📂 Project Structure
 
-STM32_Smart_Lock/
+
+
+```md
+
+
+
+
+STM32\_Smart\_Lock/
 ├── Core/
 │   ├── Src/
 │   │   ├── main.c
-│   │   ├── smart_lock.c
+│   │   ├── smart\_lock.c
 │   ├── Inc/
-│       ├── smart_lock.h
+│       ├── smart\_lock.h
 ├── README.md
+
+```
+
 
 
 
