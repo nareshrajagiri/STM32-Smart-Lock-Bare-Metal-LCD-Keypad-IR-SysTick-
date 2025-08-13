@@ -83,7 +83,7 @@ Uses a **16x2 LCD (4-bit)**, **4x3 matrix keypad**, **IR sensor (active LOW)**, 
 
 
 ## Methodology (What the firmware does)
-- Hardware Init
+1. Hardware Init
 - Enable clocks (RCC) for GPIOA/B/C. Configure:
 
 - PA0–PA5 → LCD outputs
@@ -92,19 +92,19 @@ Uses a **16x2 LCD (4-bit)**, **4x3 matrix keypad**, **IR sensor (active LOW)**, 
 
 - PC0 → IR input (active LOW)
 
-- Timing with SysTick
+2. Timing with SysTick
 - Configure SysTick for a 1 ms tick using SystemCoreClock.
 
-- LCD & Keypad
+3. LCD & Keypad
 - Initialize LCD in 4-bit mode; scan keypad by driving columns and reading rows.
 
-- IR-Triggered Auth
+4. IR-Triggered Auth
 - Idle: Waiting for user. On IR LOW → show Enter Password.
 
-- Password Handling
+5. Password Handling
 - Read 4 keys, display as ****, compare with "1234".
 
-- Security & Feedback
+6. Security & Feedback
 
 - Correct → Access Granted (3s)
 
@@ -112,7 +112,7 @@ Uses a **16x2 LCD (4-bit)**, **4x3 matrix keypad**, **IR sensor (active LOW)**, 
 
 - 4th wrong → System Locked! (no input)
 
-- Continuous Loop
+7. Continuous Loop
 - Monitor → Authenticate → Feedback → repeat.
 
 ## Build & Flash (STM32CubeIDE, No HAL)
