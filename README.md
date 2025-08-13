@@ -82,40 +82,40 @@ Uses a **16x2 LCD (4-bit)**, **4x3 matrix keypad**, **IR sensor (active LOW)**, 
 
 
 
-Methodology (What the firmware does)
-Hardware Init
-Enable clocks (RCC) for GPIOA/B/C. Configure:
+## Methodology (What the firmware does)
+- Hardware Init
+- Enable clocks (RCC) for GPIOA/B/C. Configure:
 
-PA0–PA5 → LCD outputs
+- PA0–PA5 → LCD outputs
 
-PB0–PB3 → keypad row inputs with pull-ups; PB4–PB6 → column outputs
+- PB0–PB3 → keypad row inputs with pull-ups; PB4–PB6 → column outputs
 
-PC0 → IR input (active LOW)
+- PC0 → IR input (active LOW)
 
-Timing with SysTick
-Configure SysTick for a 1 ms tick using SystemCoreClock.
+- Timing with SysTick
+- Configure SysTick for a 1 ms tick using SystemCoreClock.
 
-LCD & Keypad
-Initialize LCD in 4-bit mode; scan keypad by driving columns and reading rows.
+- LCD & Keypad
+- Initialize LCD in 4-bit mode; scan keypad by driving columns and reading rows.
 
-IR-Triggered Auth
-Idle: Waiting for user. On IR LOW → show Enter Password.
+- IR-Triggered Auth
+- Idle: Waiting for user. On IR LOW → show Enter Password.
 
-Password Handling
-Read 4 keys, display as ****, compare with "1234".
+- Password Handling
+- Read 4 keys, display as ****, compare with "1234".
 
-Security & Feedback
+- Security & Feedback
 
-Correct → Access Granted (3s)
+- Correct → Access Granted (3s)
 
-Wrong → penalties: 10s, 20s, 30s (LCD countdown)
+- Wrong → penalties: 10s, 20s, 30s (LCD countdown)
 
-4th wrong → System Locked! (no input)
+- 4th wrong → System Locked! (no input)
 
-Continuous Loop
-Monitor → Authenticate → Feedback → repeat.
+- Continuous Loop
+- Monitor → Authenticate → Feedback → repeat.
 
-Build & Flash (STM32CubeIDE, No HAL)
+## Build & Flash (STM32CubeIDE, No HAL)
 Create Project: New STM32 Project → MCU STM32F407VG (DISC1).
 
 No HAL: Choose empty project or delete HAL sources if auto-generated. Keep:
