@@ -72,7 +72,6 @@ Uses a **16x2 LCD (4-bit)**, **4x3 matrix keypad**, **IR sensor (active LOW)**, 
 
 > Note: LCD is powered at 5V; STM32 I/O is 3.3V. Most HD44780 modules accept 3.3V as HIGH. Ensure **common GND**. If characters are unstable, add level shifting.
 
----
 
 ## High-Level Block Diagram
 
