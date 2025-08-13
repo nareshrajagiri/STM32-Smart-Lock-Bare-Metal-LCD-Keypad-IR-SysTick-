@@ -75,13 +75,59 @@ Uses a **16x2 LCD (4-bit)**, **4x3 matrix keypad**, **IR sensor (active LOW)**, 
 
 ## High-Level Block Diagram
 
-```mermaid
-flowchart LR
-    IR[IR Sensor (PC0, Active LOW)] -->|Presence| MCU[(STM32F407)]
-    Keypad[4x3 Keypad (PB0..PB6)] -->|Key Presses| MCU
-    MCU -->|4-bit Data + RS/EN| LCD[LCD 16x2 (PA0..PA5)]
-    MCU -->|1ms tick| SysTick[SysTick Timer]
 
 
 <img width="1101" height="628" alt="image" src="https://github.com/user-attachments/assets/5f2d7aab-5896-4771-a4ca-e00f18200e87" />
+
+
+
+
+Methodology (What the firmware does)
+Hardware Init
+Enable clocks (RCC) for GPIOA/B/C. Configure:
+
+PA0–PA5 → LCD outputs
+
+PB0–PB3 → keypad row inputs with pull-ups; PB4–PB6 → column outputs
+
+PC0 → IR input (active LOW)
+
+Timing with SysTick
+Configure SysTick for a 1 ms tick using SystemCoreClock.
+
+LCD & Keypad
+Initialize LCD in 4-bit mode; scan keypad by driving columns and reading rows.
+
+IR-Triggered Auth
+Idle: Waiting for user. On IR LOW → show Enter Password.
+
+Password Handling
+Read 4 keys, display as ****, compare with "1234".
+
+Security & Feedback
+
+Correct → Access Granted (3s)
+
+Wrong → penalties: 10s, 20s, 30s (LCD countdown)
+
+4th wrong → System Locked! (no input)
+
+Continuous Loop
+Monitor → Authenticate → Feedback → repeat.
+
+Build & Flash (STM32CubeIDE, No HAL)
+Create Project: New STM32 Project → MCU STM32F407VG (DISC1).
+
+No HAL: Choose empty project or delete HAL sources if auto-generated. Keep:
+
+startup_stm32f407xx.s
+
+system_stm32f4xx.c (provides SystemCoreClock)
+
+Add Firmware: Create Src/main.c and paste this repo’s main.c.
+
+Build & Flash: Connect board (ST-Link), click Run/Debug.
+
+What you should see: LCD → Waiting for user.
+
 
