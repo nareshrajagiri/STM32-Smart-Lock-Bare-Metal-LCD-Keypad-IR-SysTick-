@@ -116,18 +116,18 @@ Uses a **16x2 LCD (4-bit)**, **4x3 matrix keypad**, **IR sensor (active LOW)**, 
 - Monitor → Authenticate → Feedback → repeat.
 
 ## Build & Flash (STM32CubeIDE, No HAL)
-Create Project: New STM32 Project → MCU STM32F407VG (DISC1).
+1. Create Project: New STM32 Project → MCU STM32F407VG (DISC1).
 
-No HAL: Choose empty project or delete HAL sources if auto-generated. Keep:
+2. No HAL: Choose empty project or delete HAL sources if auto-generated. Keep:
 
-startup_stm32f407xx.s
+ - startup_stm32f407xx.s
 
-system_stm32f4xx.c (provides SystemCoreClock)
+ - system_stm32f4xx.c (provides SystemCoreClock)
 
-Add Firmware: Create Src/main.c and paste this repo’s main.c.
+3. Add Firmware: Create Src/main.c and paste this repo’s main.c.
 
-Build & Flash: Connect board (ST-Link), click Run/Debug.
+4. Build & Flash: Connect board (ST-Link), click Run/Debug.
 
-What you should see: LCD → Waiting for user.
+5. What you should see: LCD → Waiting for user.
 
 
